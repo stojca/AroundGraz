@@ -12,7 +12,7 @@ public class DataController : MonoBehaviour
     {
         DontDestroyOnLoad (gameObject);
 
-        Application.LoadLevel("MenuScreen");
+        //Application.LoadLevel("MenuScreen");
         //SceneManager.LoadScene ("MenuScreen");
     }
 

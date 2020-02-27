@@ -70,6 +70,7 @@ IEnumerator ExecuteAfterTime(Collision collision)
     Debug.Log("Your enter Coroutine at" + Time.time);
     Debug.Log(this.lastPosition);
     
+    Application.LoadLevel("MenuScreen");
     //Application.LoadLevel("spajopjan");
     yield return new WaitForSeconds(3.0f);
     //this.transform.position 0 = new Vector3(this.lastPosition);

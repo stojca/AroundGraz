@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityModifer: 1.5
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!1 &140179056 stripped
 GameObject:
@@ -250,6 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensityModifer: 1.5
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
+=======
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 --- !u!1 &159326514
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,11 +672,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!1 &899362483
 =======
 --- !u!1 &851731716
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
+=======
+--- !u!1 &740063631
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -681,6 +688,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
   - component: {fileID: 899362486}
   - component: {fileID: 899362485}
@@ -695,14 +703,19 @@ GameObject:
   - component: {fileID: 851731717}
   - component: {fileID: 851731721}
   - component: {fileID: 851731722}
+=======
+  - component: {fileID: 740063633}
+  - component: {fileID: 740063632}
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: DataController
   m_TagString: Untagged
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!65 &899362484
 BoxCollider:
@@ -734,10 +747,15 @@ SpriteRenderer:
 --- !u!23 &851731718
 MeshRenderer:
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
+=======
+--- !u!114 &740063632
+MonoBehaviour:
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 899362483}
   m_Enabled: 1
@@ -809,11 +827,48 @@ MeshFilter:
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &851731720
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
+=======
+  m_GameObject: {fileID: 740063631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd023bdc6b453b4492ef7198e332c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allRoundData:
+  - name: RoundZero
+    timeLimitInSeconds: 10
+    pointsAddedForCorrectAnswer: 10
+    questions:
+    - questionText: Are lieons carnivares?
+      answers:
+      - answerText: Yes
+        isCorrect: 1
+      - answerText: No
+        isCorrect: 0
+    - questionText: Is my name Stefan?
+      answers:
+      - answerText: Yes
+        isCorrect: 1
+      - answerText: No
+        isCorrect: 0
+      - answerText: Maybe
+        isCorrect: 0
+    - questionText: Ja sam prika i surim bika :)
+      answers:
+      - answerText: 100%
+        isCorrect: 1
+      - answerText: 110%
+        isCorrect: 1
+      - answerText: 111%
+        isCorrect: 1
+--- !u!4 &740063633
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 899362483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -845,13 +900,17 @@ GameObject:
 --- !u!65 &941439772
 =======
   m_GameObject: {fileID: 851731716}
+=======
+  m_GameObject: {fileID: 740063631}
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.28, y: 9.463662, z: 0.36}
-  m_LocalScale: {x: 0.92885, y: 0.92885, z: 0.92885}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!65 &851731721
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
 BoxCollider:
@@ -950,6 +1009,8 @@ Transform:
   m_Constraints: 0
   m_CollisionDetection: 0
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
+=======
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,6 +1111,7 @@ MonoBehaviour:
   aheadSpeed: 1
   followDamping: 1
   cameraHeight: 30
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!1 &970362362
 =======
@@ -1367,6 +1429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityModifer: 1.5
+=======
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 --- !u!1 &1288774580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,50 +1564,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a26096206f7b5419de8f3a4827c7c3, type: 3}
---- !u!1 &1422853808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1422853809}
-  - component: {fileID: 1422853810}
-  m_Layer: 0
-  m_Name: FrontRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1422853809
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422853808}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.482, y: 0, z: 0.29500002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1269183677}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1422853810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422853808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 141405e8ef5c0f84b81e6ac0d39a8a0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensityModifer: 1.5
 --- !u!1001 &1468452375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1609,12 +1629,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 208f6eb6de64b4144b14e6fb734e3f86,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.2375
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 208f6eb6de64b4144b14e6fb734e3f86,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 2.09375
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 208f6eb6de64b4144b14e6fb734e3f86,
         type: 3}
@@ -1854,6 +1874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityModifer: 1.5
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!1 &1967568856
 =======
@@ -2049,6 +2070,8 @@ Transform:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityModifer: 1.5
+=======
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 --- !u!1001 &1815000821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2178,6 +2201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityModifer: 1.5
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!1 &2099311717
 =======
@@ -2372,6 +2396,8 @@ Transform:
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 >>>>>>> 49226a05182e2c165f635a03e819bdb8e27a2784:Assets/Scenes/MainScene.unity
+=======
+>>>>>>> 59d3096413f10fa22af967b2b857243d52bf42c2
 --- !u!1001 &5528028100129884206
 PrefabInstance:
   m_ObjectHideFlags: 0
