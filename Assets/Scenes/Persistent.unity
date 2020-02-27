@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allRoundData:
   - name: RoundZero
-    timeLimitInSeconds: 30
+    timeLimitInSeconds: 10
     pointsAddedForCorrectAnswer: 10
     questions:
     - questionText: Are lieons carnivares?
