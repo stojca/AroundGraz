@@ -7,12 +7,12 @@ public class AnswerButton : MonoBehaviour {
     public Text answerText;
 
     private AnswerData answerData;
-    private GameController gameController;
+    private PlayerCar gameController;
 
     // Use this for initialization
     void Start () 
     {
-        gameController = FindObjectOfType<GameController> ();
+        gameController = FindObjectOfType<PlayerCar> ();
     }
 
     public void Setup(AnswerData data)

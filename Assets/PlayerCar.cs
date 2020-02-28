@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerCar : MonoBehaviour
 {
@@ -13,6 +14,119 @@ public class PlayerCar : MonoBehaviour
     Quaternion targetRotation;
     float _sideSlipAmount;
 
+    public GameObject questionDisplay;
+    public GameObject gameDisplay;
+    public GameObject coolDown;
+
+    public Text questionDisplayText;
+    public Text scoreDisplayText;
+    public Text timeRemainingDisplayText;
+    public SimpleObjectPool answerButtonObjectPool;
+    public Transform answerButtonParent;
+
+    private DataController dataController;
+    private RoundData currentRoundData;
+    private QuestionData[] questionPool;
+
+    private bool isRoundActive;
+    private float timeRemaining;
+    private int questionIndex;
+    private int playerScore;
+    private List<GameObject> answerButtonGameObjects = new List<GameObject>();
+
+    // Use this for initialization
+    public void Start_GAME () 
+    {
+        dataController = FindObjectOfType<DataController> ();
+        currentRoundData = dataController.GetCurrentRoundData ();
+        questionPool = currentRoundData.questions;
+        timeRemaining = currentRoundData.timeLimitInSeconds;
+        //UpdateTimeRemainingDisplay();
+
+        playerScore = 0;
+        questionIndex = 0;
+
+        questionDisplay.SetActive (true);
+        //gameDisplay.SetActive (false);
+
+        ShowQuestion ();
+        isRoundActive = true;
+
+    }
+
+    private void ShowQuestion()
+    {
+        RemoveAnswerButtons ();
+        QuestionData questionData = questionPool [questionIndex];
+        questionDisplayText.text = questionData.questionText;
+
+        for (int i = 0; i < questionData.answers.Length; i++) 
+        {
+            GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
+            answerButtonGameObjects.Add(answerButtonGameObject);
+            answerButtonGameObject.transform.SetParent(answerButtonParent);
+
+            AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
+            answerButton.Setup(questionData.answers[i]);
+
+            Debug.Log("if" + questionData.answers.Length);
+            if(i == questionData.answers.Length - 1)
+            {
+                Debug.Log("if");
+                //EndRound();
+               
+            }
+            
+        }
+    }
+
+    private void RemoveAnswerButtons()
+    {
+        while (answerButtonGameObjects.Count > 0) 
+        {
+            answerButtonObjectPool.ReturnObject(answerButtonGameObjects[0]);
+            answerButtonGameObjects.RemoveAt(0);
+        }
+    }
+
+    public void AnswerButtonClicked(bool isCorrect)
+    {
+        if (isCorrect) 
+        {
+            playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+            scoreDisplayText.text = "Score: " + playerScore.ToString();
+        }
+
+        if (questionPool.Length > questionIndex + 1) {
+            questionIndex++;
+            ShowQuestion ();
+        } else 
+        {
+            EndRound();
+        }
+
+    }
+    
+    public void EndRound()
+    {
+        isRoundActive = false;
+
+        questionDisplay.SetActive (false);
+        //gameDisplay.SetActive (true);
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene ("MenuScreen");
+    }
+
+    private void UpdateTimeRemainingDisplay()
+    {
+        timeRemainingDisplayText.text = "Time: " + Mathf.Round (timeRemaining).ToString ();
+    }
+
+
+    // #################################################################
     public float SlideSlipAmount()
     {
             return _sideSlipAmount;
@@ -25,6 +139,17 @@ public class PlayerCar : MonoBehaviour
 
     void Update()
     {
+        if (isRoundActive) 
+        {
+            timeRemaining -= Time.deltaTime;
+            UpdateTimeRemainingDisplay();
+
+            if (timeRemaining <= 0f)
+            {
+                EndRound();
+            }
+
+        }
         SetRotationPoint();
         SetSlideSlip();
     }
@@ -70,24 +195,41 @@ IEnumerator ExecuteAfterTime(Collision collision)
     Debug.Log("Your enter Coroutine at" + Time.time);
     Debug.Log(this.lastPosition);
     
-    Application.LoadLevel("MenuScreen");
+    //Application.LoadLevel("Game");
     //Application.LoadLevel("spajopjan");
-    yield return new WaitForSeconds(3.0f);
+    
+    Start_GAME();
+    
+
+    yield return new WaitForSeconds(timeRemaining);
     //this.transform.position 0 = new Vector3(this.lastPosition);
     Debug.Log("pusim ga poslije");
     
     
     acceleration = 2200;
-     turnSpeed = 80;
+    turnSpeed = 80;
     yield return new WaitForSeconds(5.0f);
+
     collision.gameObject.GetComponent<Renderer> ().enabled = true;
      
      // Code to execute after the delay
  }
 
+ IEnumerator ExecuteAfterEnemy()
+ {
+     Debug.Log("pusim ga prije");
+    coolDown.SetActive(true);
+    yield return new WaitForSeconds(6.0f);
+    coolDown.SetActive(false);
+    Debug.Log("pusim ga poslije");
+    acceleration = 2200;
+    turnSpeed = 80;
+ }
+
+
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "enemy3")
+        if(collision.gameObject.tag == "Question")
         {
 
             acceleration = 0;
@@ -95,12 +237,21 @@ IEnumerator ExecuteAfterTime(Collision collision)
             //xApplication.LoadLevel("spajopjan");
             //Destroy(collision.gameObject);
             collision.gameObject.GetComponent<Renderer> ().enabled = false;
-            
+
+
             StartCoroutine(ExecuteAfterTime(collision));
-            collision.gameObject.SetActive(true);
+            //collision.gameObject.SetActive(true);
             
     
         }
+        if(collision.gameObject.tag == "Enemy")
+        {
+            acceleration = 800;
+            turnSpeed = 20;
+            //Start_Writing();
+            StartCoroutine(ExecuteAfterEnemy());
+        }
        
     }
+
 }
