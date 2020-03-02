@@ -1,8 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class PlayerCar : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class PlayerCar : MonoBehaviour
     private int questionIndex;
     private int playerScore;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
+    public GameManager gm;
 
     // Use this for initialization
     public void Start_GAME () 
@@ -246,6 +248,7 @@ IEnumerator ExecuteAfterTime(Collision collision)
         }
         if(collision.gameObject.tag == "Enemy")
         {
+            gm.endGame();
             acceleration = 800;
             turnSpeed = 20;
             //Start_Writing();
