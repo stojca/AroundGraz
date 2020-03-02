@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1818,6 +1818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 80
   acceleration: 2200
+  gameOverObject: {fileID: 0}
   questionDisplay: {fileID: 1935877585}
   gameDisplay: {fileID: 0}
   coolDown: {fileID: 1653451950}
@@ -1826,6 +1827,7 @@ MonoBehaviour:
   timeRemainingDisplayText: {fileID: 1540271366}
   answerButtonObjectPool: {fileID: 1440994116}
   answerButtonParent: {fileID: 2111285540}
+  gm: {fileID: 0}
 --- !u!54 &1528838400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2770,7 +2772,7 @@ PrefabInstance:
     - target: {fileID: 5528028100588069476, guid: c9bdc90a5562a554d9b0f485b87b3f33,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 95
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5528028100588069478, guid: c9bdc90a5562a554d9b0f485b87b3f33,
         type: 3}

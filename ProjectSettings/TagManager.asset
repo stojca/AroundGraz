@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Question
   - Enemy
+  - Border
   layers:
   - Default
   - TransparentFX
