@@ -1745,7 +1745,7 @@ MonoBehaviour:
   allRoundData:
   - name: RoundZero
     timeLimitInSeconds: 30
-    pointsAddedForCorrectAnswer: 10
+    pointsAddedForCorrectAnswer: 9
     questions:
     - questionText: Graz is the state capital which country?
       answers:
@@ -1753,21 +1753,71 @@ MonoBehaviour:
         isCorrect: 1
       - answerText: Carinthia
         isCorrect: 0
-    - questionText: Is my name Stefan?
+    - questionText: Is Graz the third largest city in the Republic of Austria?
+      answers:
+      - answerText: Yes
+        isCorrect: 0
+      - answerText: No
+        isCorrect: 1
+      - answerText: Maybe
+        isCorrect: 0
+    - questionText: Which river flows through Styria and Graz?
+      answers:
+      - answerText: Mur
+        isCorrect: 1
+      - answerText: Donau
+        isCorrect: 1
+      - answerText: Drawa
+        isCorrect: 1
+    - questionText: Is Mur longer than 500 km for you?
+      answers:
+      - answerText: No
+        isCorrect: 1
+      - answerText: Yes
+        isCorrect: 0
+    - questionText: What is Styria known for?
+      answers:
+      - answerText: Wine
+        isCorrect: 1
+      - answerText: Pumpkin seed oil
+        isCorrect: 1
+      - answerText: Bier
+        isCorrect: 1
+    - questionText: How many federal states does Austria have?
+      answers:
+      - answerText: 9
+        isCorrect: 1
+      - answerText: 6
+        isCorrect: 0
+      - answerText: I do not know
+        isCorrect: 1
+    - questionText: Are there more than 30 cities in Styria?
       answers:
       - answerText: Yes
         isCorrect: 1
       - answerText: No
         isCorrect: 0
-      - answerText: Maybe
-        isCorrect: 0
-    - questionText: Ja sam prika i surim bika :)
+    - questionText: Is Graz a beautiful city?
       answers:
-      - answerText: 100%
+      - answerText: Yes
         isCorrect: 1
-      - answerText: 110%
+      - answerText: Sure
         isCorrect: 1
-      - answerText: 111%
+      - answerText: 'Absolutely '
+        isCorrect: 1
+    - questionText: Does the city of Graz have more than 300,000 inhabitants?
+      answers:
+      - answerText: No
+        isCorrect: 1
+      - answerText: Yes
+        isCorrect: 0
+    - questionText: Which river flows through Styria and Graz?
+      answers:
+      - answerText: Mur
+        isCorrect: 1
+      - answerText: Donau
+        isCorrect: 1
+      - answerText: Drawa
         isCorrect: 1
 --- !u!4 &740063633
 Transform:
