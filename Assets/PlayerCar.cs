@@ -14,6 +14,7 @@ public class PlayerCar : MonoBehaviour
     private bool enter = false;
     Quaternion targetRotation;
     float _sideSlipAmount;
+    [SerializeField] GameObject gameOverObject;
 
     public GameObject questionDisplay;
     public GameObject gameDisplay;
@@ -220,9 +221,11 @@ IEnumerator ExecuteAfterTime(Collision collision)
  IEnumerator ExecuteAfterEnemy()
  {
      Debug.Log("pusim ga prije");
-    coolDown.SetActive(true);
+    //coolDown.SetActive(true);
+    gameOverObject.SetActive(true);
     yield return new WaitForSeconds(6.0f);
-    coolDown.SetActive(false);
+    //gameOverObject.SetActive(false);
+    //coolDown.SetActive(false);
     Debug.Log("pusim ga poslije");
     acceleration = 2200;
     turnSpeed = 80;
@@ -248,7 +251,6 @@ IEnumerator ExecuteAfterTime(Collision collision)
         }
         if(collision.gameObject.tag == "Enemy")
         {
-            gm.endGame();
             acceleration = 800;
             turnSpeed = 20;
             //Start_Writing();

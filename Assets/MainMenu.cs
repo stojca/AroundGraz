@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public void playGame() {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void quitGame() {
-        Debug.Log("izaso sam ");
         Application.Quit();
     }
 }
