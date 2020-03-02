@@ -25,17 +25,26 @@ public class PlayerCar : MonoBehaviour
     public Text timeRemainingDisplayText;
     public SimpleObjectPool answerButtonObjectPool;
     public Transform answerButtonParent;
+    public Text timerText;
 
     private DataController dataController;
     private RoundData currentRoundData;
     private QuestionData[] questionPool;
 
     private bool isRoundActive;
+    private bool isCarActive;
     private float timeRemaining;
     private int questionIndex;
     private int playerScore;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     public GameManager gm;
+
+    private float secondsCount = 0;
+     private int minuteCount = 0;
+     private int hourCount = 0;
+     private float scoreStatus = 0;
+     private float healthStatus = 100;
+    
 
     // Use this for initialization
     public void Start_GAME () 
@@ -43,8 +52,8 @@ public class PlayerCar : MonoBehaviour
         dataController = FindObjectOfType<DataController> ();
         currentRoundData = dataController.GetCurrentRoundData ();
         questionPool = currentRoundData.questions;
-        timeRemaining = currentRoundData.timeLimitInSeconds;
-        //UpdateTimeRemainingDisplay();
+        timeRemaining = 30.0f;
+        UpdateTimeRemainingDisplay();
 
         playerScore = 0;
         questionIndex = 0;
@@ -54,6 +63,7 @@ public class PlayerCar : MonoBehaviour
 
         ShowQuestion ();
         isRoundActive = true;
+        isCarActive = true; 
 
     }
 
@@ -139,10 +149,24 @@ public class PlayerCar : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
     }
+    
+    public void UpdateTimerUI(){
+         //set timer UI
+         secondsCount += Time.deltaTime;
+         timerText.text = "m:"+(int)secondsCount + "s\nHealth:" + (int)healthStatus + "\nScore:"+(int)scoreStatus;
+         if(secondsCount >= 60){
+             minuteCount++;
+             secondsCount = 0;
+         }else if(minuteCount >= 60){
+             hourCount++;
+             minuteCount = 0;
+         }    
+     }
 
     void Update()
     {
-        if (isRoundActive) 
+        UpdateTimerUI();
+        if (isCarActive) 
         {
             timeRemaining -= Time.deltaTime;
             UpdateTimeRemainingDisplay();
@@ -193,17 +217,11 @@ public class PlayerCar : MonoBehaviour
 
 IEnumerator ExecuteAfterTime(Collision collision)
  {
-               
-    Debug.Log("pusim ga");
     Debug.Log("Your enter Coroutine at" + Time.time);
     Debug.Log(this.lastPosition);
     
-    //Application.LoadLevel("Game");
-    //Application.LoadLevel("spajopjan");
-    
     Start_GAME();
     
-
     yield return new WaitForSeconds(timeRemaining);
     //this.transform.position 0 = new Vector3(this.lastPosition);
     Debug.Log("pusim ga poslije");
@@ -255,6 +273,16 @@ IEnumerator ExecuteAfterTime(Collision collision)
             turnSpeed = 20;
             //Start_Writing();
             StartCoroutine(ExecuteAfterEnemy());
+        }
+      /*  if (collision.gameObject.tag == "Obstacle") {
+            healthStatus -= 10;
+            if(healthStatus <= 0) SceneManager.LoadScene("endGame");
+            Destroy (collision.gameObject);
+     }*/
+      if (collision.gameObject.tag == "Border") {
+        healthStatus -= 10;
+        if(healthStatus <= 0)
+            gameOverObject.SetActive(true);
         }
        
     }
