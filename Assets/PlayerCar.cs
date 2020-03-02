@@ -35,8 +35,8 @@ public class PlayerCar : MonoBehaviour
     private bool isRoundActive;
     private bool isCarActive = true;
     private float timeRemainingQuestion;
-    private float timeRemainingGame = 10.0f;
-    private int questionIndex;
+    private float timeRemainingGame = 30.0f;
+    private int questionIndex = 0;
     private int playerScore;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     public GameManager gm;
@@ -58,7 +58,7 @@ public class PlayerCar : MonoBehaviour
         UpdateTimeRemainingDisplay();
 
         playerScore = 0;
-        questionIndex = 0;
+        //questionIndex = 0;
 
         questionDisplay.SetActive (true);
         //gameDisplay.SetActive (false);
@@ -72,6 +72,8 @@ public class PlayerCar : MonoBehaviour
     {
         RemoveAnswerButtons ();
         QuestionData questionData = questionPool [questionIndex];
+        Debug.Log(questionPool);
+        Debug.Log(questionIndex);
         questionDisplayText.text = questionData.questionText;
 
         for (int i = 0; i < questionData.answers.Length; i++) 
@@ -82,14 +84,6 @@ public class PlayerCar : MonoBehaviour
 
             AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
             answerButton.Setup(questionData.answers[i]);
-
-            Debug.Log("if" + questionData.answers.Length);
-            if(i == questionData.answers.Length - 1)
-            {
-                Debug.Log("if");
-                //EndRound();
-               
-            }
             
         }
     }
