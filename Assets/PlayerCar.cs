@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro; 
 
 
 public class PlayerCar : MonoBehaviour
@@ -23,17 +24,18 @@ public class PlayerCar : MonoBehaviour
     public Text questionDisplayText;
     public Text scoreDisplayText;
     public Text timeRemainingDisplayText;
+    public TextMeshProUGUI gameTimeDisplay;
     public SimpleObjectPool answerButtonObjectPool;
     public Transform answerButtonParent;
-    public Text timerText;
 
     private DataController dataController;
     private RoundData currentRoundData;
     private QuestionData[] questionPool;
 
     private bool isRoundActive;
-    private bool isCarActive;
-    private float timeRemaining;
+    private bool isCarActive = true;
+    private float timeRemainingQuestion;
+    private float timeRemainingGame = 10.0f;
     private int questionIndex;
     private int playerScore;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
@@ -52,7 +54,7 @@ public class PlayerCar : MonoBehaviour
         dataController = FindObjectOfType<DataController> ();
         currentRoundData = dataController.GetCurrentRoundData ();
         questionPool = currentRoundData.questions;
-        timeRemaining = 30.0f;
+        timeRemainingQuestion = 3.0f;
         UpdateTimeRemainingDisplay();
 
         playerScore = 0;
@@ -63,7 +65,6 @@ public class PlayerCar : MonoBehaviour
 
         ShowQuestion ();
         isRoundActive = true;
-        isCarActive = true; 
 
     }
 
@@ -128,6 +129,14 @@ public class PlayerCar : MonoBehaviour
         //gameDisplay.SetActive (true);
     }
 
+    public void EndGame()
+    {
+        isCarActive = false; 
+        gameOverObject.SetActive(true);
+        acceleration = 0;
+        turnSpeed = 0;
+    }
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene ("MenuScreen");
@@ -135,7 +144,12 @@ public class PlayerCar : MonoBehaviour
 
     private void UpdateTimeRemainingDisplay()
     {
-        timeRemainingDisplayText.text = "Time: " + Mathf.Round (timeRemaining).ToString ();
+        timeRemainingDisplayText.text = "Time: " + Mathf.Round (timeRemainingQuestion).ToString ();
+    }
+
+    private void UpdateTimeRemainingDisplayGAME()
+    {
+        gameTimeDisplay.text = "Time: " + Mathf.Round (timeRemainingGame).ToString ();
     }
 
 
@@ -153,7 +167,7 @@ public class PlayerCar : MonoBehaviour
     public void UpdateTimerUI(){
          //set timer UI
          secondsCount += Time.deltaTime;
-         timerText.text = "m:"+(int)secondsCount + "s\nHealth:" + (int)healthStatus + "\nScore:"+(int)scoreStatus;
+         //timerText.text = "m:"+(int)secondsCount + "s\nHealth:" + (int)healthStatus + "\nScore:"+(int)scoreStatus;
          if(secondsCount >= 60){
              minuteCount++;
              secondsCount = 0;
@@ -165,17 +179,27 @@ public class PlayerCar : MonoBehaviour
 
     void Update()
     {
-        UpdateTimerUI();
-        if (isCarActive) 
+        //UpdateTimerUI();
+        if(isCarActive)
         {
-            timeRemaining -= Time.deltaTime;
+            timeRemainingGame -= Time.deltaTime;
+            UpdateTimeRemainingDisplayGAME();
+            if (timeRemainingGame <= 0f)
+            {
+                EndGame();
+            }
+        }
+    
+        
+        if (isRoundActive) 
+        {
+            timeRemainingQuestion -= Time.deltaTime;
             UpdateTimeRemainingDisplay();
 
-            if (timeRemaining <= 0f)
+            if (timeRemainingQuestion <= 0f)
             {
                 EndRound();
-            }
-
+            }  
         }
         SetRotationPoint();
         SetSlideSlip();
@@ -202,7 +226,9 @@ public class PlayerCar : MonoBehaviour
             Vector3 direction = target - transform.position;
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
+             
         }
+        
     }
 
     private void FixedUpdate()
@@ -213,6 +239,7 @@ public class PlayerCar : MonoBehaviour
         _rigidBody.AddRelativeForce(Vector3.forward * accelerationInput);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Mathf.Clamp(speed, -1, 1) * Time.fixedDeltaTime);
+        
     }
 
 IEnumerator ExecuteAfterTime(Collision collision)
@@ -222,10 +249,7 @@ IEnumerator ExecuteAfterTime(Collision collision)
     
     Start_GAME();
     
-    yield return new WaitForSeconds(timeRemaining);
-    //this.transform.position 0 = new Vector3(this.lastPosition);
-    Debug.Log("pusim ga poslije");
-    
+    yield return new WaitForSeconds(timeRemainingQuestion);
     
     acceleration = 2200;
     turnSpeed = 80;
@@ -239,11 +263,11 @@ IEnumerator ExecuteAfterTime(Collision collision)
  IEnumerator ExecuteAfterEnemy()
  {
      Debug.Log("pusim ga prije");
-    //coolDown.SetActive(true);
-    gameOverObject.SetActive(true);
+    coolDown.SetActive(true);
+    //gameOverObject.SetActive(true);
     yield return new WaitForSeconds(6.0f);
     //gameOverObject.SetActive(false);
-    //coolDown.SetActive(false);
+    coolDown.SetActive(false);
     Debug.Log("pusim ga poslije");
     acceleration = 2200;
     turnSpeed = 80;
