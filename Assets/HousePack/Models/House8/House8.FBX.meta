@@ -27,7 +27,97 @@ ModelImporter:
   - first:
       95: 9500000
     second: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map1
+    second: {fileID: 2100000, guid: d9a8dfbfb1cfe3243b2dd8d457f1e925, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map10
+    second: {fileID: 2100000, guid: ea9a6459d3b53d64ba67bb1a3a6cb24b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map11
+    second: {fileID: 2100000, guid: f35ed3f79985d99469f621261c897abc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map12
+    second: {fileID: 2100000, guid: b1f71a3195ad9b542966c19d94b224fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map13
+    second: {fileID: 2100000, guid: 1a879ccb2fe0df24fb4ad8302cc21531, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map14
+    second: {fileID: 2100000, guid: d9a8dfbfb1cfe3243b2dd8d457f1e925, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map15
+    second: {fileID: 2100000, guid: 6a6527d60200f0f4c8a06344038d8fc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map16
+    second: {fileID: 2100000, guid: d2c9b5d8770343f4898fa99726176b2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map17
+    second: {fileID: 2100000, guid: 3af4b774538415f4b942aa4a152f0176, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map18
+    second: {fileID: 2100000, guid: bbebed51b6ac0cf4ea2120dad564a322, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map2
+    second: {fileID: 2100000, guid: d2c9b5d8770343f4898fa99726176b2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map3
+    second: {fileID: 2100000, guid: ea9a6459d3b53d64ba67bb1a3a6cb24b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map4
+    second: {fileID: 2100000, guid: b6c8de20f47b3e4419de633bfee6c383, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map5
+    second: {fileID: 2100000, guid: 1a879ccb2fe0df24fb4ad8302cc21531, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map6
+    second: {fileID: 2100000, guid: e8f724cd1538273409ea6a4aa9e1bd89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map7
+    second: {fileID: 2100000, guid: fb1d3730cdae94744a2b04d1b99a3654, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map8
+    second: {fileID: 2100000, guid: a20514686c8d03c4fabf9a120e26f79c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: map9
+    second: {fileID: 2100000, guid: e8f724cd1538273409ea6a4aa9e1bd89, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -58,7 +148,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.25
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -105,7 +195,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.25
+    globalScale: 0.2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
