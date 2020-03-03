@@ -47,6 +47,9 @@ public class PlayerCar : MonoBehaviour
      private float scoreStatus = 0;
      private float healthStatus = 100;
     
+    public GameObject pauseScreen;
+    public static bool isPaused = false;
+    
 
     // Use this for initialization
     public void Start_GAME () 
@@ -171,8 +174,43 @@ public class PlayerCar : MonoBehaviour
          }    
      }
 
+    public void continueGame() {
+        
+        acceleration = 2200;
+        turnSpeed = 80;
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseScreen.SetActive(false);
+    }
+
+    public void retryGame()
+    {
+        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
+        acceleration = 2200;
+        turnSpeed = 80;
+
+    }
     void Update()
     {
+      
+       if (Input.GetKeyDown(KeyCode.P))
+        {
+            if(isPaused)
+            {
+                continueGame();
+            }
+            else {
+                print("space key was pressed");
+                pauseScreen.SetActive(true);
+                isPaused = true;
+                acceleration = 0;
+                turnSpeed = 0; 
+                Time.timeScale = 0f;
+            }
+          
+        }
+
         //UpdateTimerUI();
         if(isCarActive)
         {

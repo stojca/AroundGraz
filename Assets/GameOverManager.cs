@@ -12,8 +12,5 @@ public class GameOverManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void retryGame()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
+    
 }
