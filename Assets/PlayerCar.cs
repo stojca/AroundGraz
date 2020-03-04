@@ -337,6 +337,11 @@ IEnumerator ExecuteAfterTime(Collision collision)
             //Start_Writing();
             StartCoroutine(ExecuteAfterEnemy());
         }
+          if(collision.gameObject.tag == "Coin")
+        {
+           scoreStatus += 10;
+           Destroy(collision.gameObject);
+        }
       /*  if (collision.gameObject.tag == "Obstacle") {
             healthStatus -= 10;
             if(healthStatus <= 0) SceneManager.LoadScene("endGame");
@@ -347,7 +352,6 @@ IEnumerator ExecuteAfterTime(Collision collision)
         if(healthStatus <= 0)
             gameOverObject.SetActive(true);
         }
-       
     }
 
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Question
   - Enemy
+  - Border
+  - Coin
   layers:
   - Default
   - TransparentFX
