@@ -37,7 +37,7 @@ public class PlayerCar : MonoBehaviour
     private bool isRoundActive;
     private bool isCarActive = true;
     private float timeRemainingQuestion;
-    private float timeRemainingGame = 30.0f;
+    private float timeRemainingGame = 45.0f;
     private int questionIndex = 0;
     //private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
@@ -346,6 +346,11 @@ IEnumerator ExecuteAfterTime(Collision collision)
             //Start_Writing();
             StartCoroutine(ExecuteAfterEnemy());
         }
+          if(collision.gameObject.tag == "Coin")
+        {
+           scoreStatus += 10;
+           Destroy(collision.gameObject);
+        }
       /*  if (collision.gameObject.tag == "Obstacle") {
             healthStatus -= 10;
             if(healthStatus <= 0) SceneManager.LoadScene("endGame");
@@ -356,7 +361,6 @@ IEnumerator ExecuteAfterTime(Collision collision)
         if(healthStatus <= 0)
             gameOverObject.SetActive(true);
         }
-       
     }
 
 }
