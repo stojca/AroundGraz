@@ -26,7 +26,7 @@ public class PlayerCar : MonoBehaviour
 
     public TextMeshProUGUI scoreDisplayText;
     public TextMeshProUGUI gameTimeDisplay;
-    
+
     public SimpleObjectPool answerButtonObjectPool;
     public Transform answerButtonParent;
 
@@ -39,7 +39,7 @@ public class PlayerCar : MonoBehaviour
     private float timeRemainingQuestion;
     private float timeRemainingGame = 45.0f;
     private int questionIndex = 0;
-    private int playerScore = 0;
+    //private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     public GameManager gm;
 
@@ -54,7 +54,7 @@ public class PlayerCar : MonoBehaviour
     
 
     // Use this for initialization
-    public void Start_GAME () 
+    public void start_questions_game () 
     {
         dataController = FindObjectOfType<DataController> ();
         currentRoundData = dataController.GetCurrentRoundData ();
@@ -106,7 +106,12 @@ public class PlayerCar : MonoBehaviour
     {
         if (isCorrect) 
         {
-            playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+            PlayerStats.playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+            UpdateScore();
+        }
+        else
+        {
+            PlayerStats.playerScore -= 3;
             UpdateScore();
         }
 
@@ -153,7 +158,7 @@ public class PlayerCar : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreDisplayText.text = "Score: " + playerScore.ToString();
+        scoreDisplayText.text = "Score: " + PlayerStats.playerScore.ToString();
     }
 
 
@@ -166,6 +171,7 @@ public class PlayerCar : MonoBehaviour
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
+        UpdateScore();
     }
     
     public void UpdateTimerUI(){
@@ -200,7 +206,6 @@ public class PlayerCar : MonoBehaviour
     }
     void Update()
     {
-      
        if (Input.GetKeyDown(KeyCode.P))
         {
             if(isPaused)
@@ -223,6 +228,7 @@ public class PlayerCar : MonoBehaviour
         {
             timeRemainingGame -= Time.deltaTime;
             UpdateTimeRemainingDisplayGAME();
+            UpdateScore();
             if (timeRemainingGame <= 0f)
             {
                 EndGame();
@@ -278,7 +284,7 @@ public class PlayerCar : MonoBehaviour
         _rigidBody.AddRelativeForce(Vector3.forward * accelerationInput);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Mathf.Clamp(speed, -1, 1) * Time.fixedDeltaTime);
-        
+
     }
 
 IEnumerator ExecuteAfterTime(Collision collision)
@@ -286,7 +292,7 @@ IEnumerator ExecuteAfterTime(Collision collision)
     Debug.Log("Your enter Coroutine at" + Time.time);
     Debug.Log(this.lastPosition);
     
-    Start_GAME();
+    start_questions_game();
     
     yield return new WaitForSeconds(timeRemainingQuestion);
     
@@ -294,7 +300,8 @@ IEnumerator ExecuteAfterTime(Collision collision)
     turnSpeed = 80;
     yield return new WaitForSeconds(5.0f);
 
-    collision.gameObject.GetComponent<Renderer> ().enabled = true;
+    collision.gameObject.SetActive(true);
+    //collision.gameObject.GetComponent<Renderer> ().enabled = true;
      
      // Code to execute after the delay
  }
@@ -322,7 +329,8 @@ IEnumerator ExecuteAfterTime(Collision collision)
             turnSpeed = 0;  
             //xApplication.LoadLevel("spajopjan");
             //Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Renderer> ().enabled = false;
+            collision.gameObject.SetActive(false);
+            //collision.gameObject.GetComponent<Renderer> ().enabled = false;
 
 
             StartCoroutine(ExecuteAfterTime(collision));
@@ -332,6 +340,7 @@ IEnumerator ExecuteAfterTime(Collision collision)
         }
         if(collision.gameObject.tag == "Enemy")
         {
+            //Application.LoadLevel("InnerStadt");
             acceleration = 800;
             turnSpeed = 20;
             //Start_Writing();
