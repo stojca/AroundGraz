@@ -30,6 +30,9 @@
 .gradle/
 
 Library/
+Library/.*
+.Library/
+.Library/*
 
 
 
