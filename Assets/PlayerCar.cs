@@ -209,7 +209,7 @@ public class PlayerCar : MonoBehaviour
         Time.timeScale = 1f;
         acceleration = 2200;
         turnSpeed = 80;
-        
+        PlayerStats.playerScore = 0;
 
     }
     void Update()
@@ -329,6 +329,7 @@ public class PlayerCar : MonoBehaviour
             UpdateScore();
             Destroy(collision.gameObject);
         }
+      
     }
 
     void OnCollisionEnter(Collision collision)
@@ -356,6 +357,13 @@ public class PlayerCar : MonoBehaviour
             Destroy(collision.gameObject);
 
             StartCoroutine(ExecuteAfterEnemy());
+        }
+
+          if(collision.gameObject.tag == "Time")
+        {
+             UpdateTimeRemainingDisplayGAME();
+             timeRemainingGame += 5f;
+            Destroy(collision.gameObject);
         }
 
         /*  if (collision.gameObject.tag == "Obstacle") {
