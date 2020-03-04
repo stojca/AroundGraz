@@ -198,7 +198,7 @@ public class PlayerCar : MonoBehaviour
 
     public void retryGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Level 1");
         Time.timeScale = 1f;
         acceleration = 2200;
         turnSpeed = 80;
