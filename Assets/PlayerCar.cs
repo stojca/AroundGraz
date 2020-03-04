@@ -309,14 +309,8 @@ IEnumerator ExecuteAfterTime(Collision collision)
  IEnumerator ExecuteAfterEnemy()
  {
      Debug.Log("pusim ga prije");
-    coolDown.SetActive(true);
-    //gameOverObject.SetActive(true);
     yield return new WaitForSeconds(6.0f);
-    //gameOverObject.SetActive(false);
-    coolDown.SetActive(false);
     Debug.Log("pusim ga poslije");
-    acceleration = 2200;
-    turnSpeed = 80;
  }
  void OnTriggerEnter(Collider collision)
  {
@@ -325,6 +319,11 @@ IEnumerator ExecuteAfterTime(Collision collision)
            PlayerStats.playerScore += 10;
            UpdateScore();
            Destroy(collision.gameObject);
+        }
+
+          if(collision.gameObject.tag == "Enemy")
+        {
+            healthStatus -= 10;
         }
  }
 
@@ -336,25 +335,13 @@ IEnumerator ExecuteAfterTime(Collision collision)
 
             acceleration = 0;
             turnSpeed = 0;  
-            //xApplication.LoadLevel("spajopjan");
             //Destroy(collision.gameObject);
             collision.gameObject.SetActive(false);
             //collision.gameObject.GetComponent<Renderer> ().enabled = false;
-
-
             StartCoroutine(ExecuteAfterTime(collision));
             //collision.gameObject.SetActive(true);
-            
-    
         }
-        if(collision.gameObject.tag == "Enemy")
-        {
-            //Application.LoadLevel("InnerStadt");
-            acceleration = 800;
-            turnSpeed = 20;
-            //Start_Writing();
-            StartCoroutine(ExecuteAfterEnemy());
-        }
+      
          
       /*  if (collision.gameObject.tag == "Obstacle") {
             healthStatus -= 10;
