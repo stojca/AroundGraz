@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63378c9e93891ba43b71973b16224476
+guid: e4bee41dab8ddc84fb6e0d6221e8226e
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -7,53 +7,17 @@ ModelImporter:
       1: 100000
     second: //RootNode
   - first:
-      1: 100002
-    second: House_2_lod_0
-  - first:
-      1: 100004
-    second: House_2_lod_1
-  - first:
-      1: 100006
-    second: House_2_lod_2
-  - first:
       4: 400000
     second: //RootNode
   - first:
-      4: 400002
-    second: House_2_lod_0
-  - first:
-      4: 400004
-    second: House_2_lod_1
-  - first:
-      4: 400006
-    second: House_2_lod_2
-  - first:
       23: 2300000
-    second: House_2_lod_0
-  - first:
-      23: 2300002
-    second: House_2_lod_1
-  - first:
-      23: 2300004
-    second: House_2_lod_2
+    second: //RootNode
   - first:
       33: 3300000
-    second: House_2_lod_0
-  - first:
-      33: 3300002
-    second: House_2_lod_1
-  - first:
-      33: 3300004
-    second: House_2_lod_2
+    second: //RootNode
   - first:
       43: 4300000
-    second: House_2_lod_0
-  - first:
-      43: 4300002
-    second: House_2_lod_1
-  - first:
-      43: 4300004
-    second: House_2_lod_2
+    second: ??? ?? 3D001
   - first:
       95: 9500000
     second: //RootNode
@@ -61,12 +25,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: House_2
-    second: {fileID: 2100000, guid: 3779002b4fd983d409f96ee6684e9df9, type: 2}
+      name: Rail_metallic
+    second: {fileID: 2100000, guid: 116ff2aa1eb9cd540b92bdbc118bc273, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rail_side
+    second: {fileID: 2100000, guid: 865e912c80c057246be17344a7233c27, type: 2}
   materials:
     importMaterials: 1
-    materialName: 1
-    materialSearch: 2
+    materialName: 0
+    materialSearch: 1
     materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
@@ -93,15 +62,15 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.2
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -117,12 +86,12 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
-    normalCalculationMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
@@ -140,11 +109,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.2
+    globalScale: 0.508
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
