@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -696,18 +696,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &658320682 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4626729969516774088, guid: c2486608777cdfb4dabc63ba62a228fa,
-    type: 3}
-  m_PrefabInstance: {fileID: 4626729970168672226}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +819,7 @@ MonoBehaviour:
   allRoundData:
   - name: RoundZero
     timeLimitInSeconds: 30
-    pointsAddedForCorrectAnswer: 9
+    pointsAddedForCorrectAnswer: 5
     questions:
     - questionText: Graz is the state capital which country?
       answers:
@@ -2468,8 +2456,8 @@ MonoBehaviour:
   gameDisplay: {fileID: 0}
   coolDown: {fileID: 1653451950}
   questionDisplayText: {fileID: 1922802618}
-  scoreDisplayText: {fileID: 658320682}
   timeRemainingDisplayText: {fileID: 1540271366}
+  scoreDisplayText: {fileID: 7681946373390645366}
   gameTimeDisplay: {fileID: 1097719622}
   answerButtonObjectPool: {fileID: 1440994116}
   answerButtonParent: {fileID: 2111285540}
@@ -4166,3 +4154,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b4c689b7c5a6a86bef674b4cc72301, type: 3}
+--- !u!114 &7681946373390645366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7681946373723229450, guid: d0b4c689b7c5a6a86bef674b4cc72301,
+    type: 3}
+  m_PrefabInstance: {fileID: 7681946373390645365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

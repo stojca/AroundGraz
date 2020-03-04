@@ -22,9 +22,11 @@ public class PlayerCar : MonoBehaviour
     public GameObject coolDown;
 
     public Text questionDisplayText;
-    public Text scoreDisplayText;
     public Text timeRemainingDisplayText;
+
+    public TextMeshProUGUI scoreDisplayText;
     public TextMeshProUGUI gameTimeDisplay;
+    
     public SimpleObjectPool answerButtonObjectPool;
     public Transform answerButtonParent;
 
@@ -37,7 +39,7 @@ public class PlayerCar : MonoBehaviour
     private float timeRemainingQuestion;
     private float timeRemainingGame = 30.0f;
     private int questionIndex = 0;
-    private int playerScore;
+    private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     public GameManager gm;
 
@@ -60,7 +62,7 @@ public class PlayerCar : MonoBehaviour
         timeRemainingQuestion = 3.0f;
         UpdateTimeRemainingDisplay();
 
-        playerScore = 0;
+        //playerScore = 0;
         //questionIndex = 0;
 
         questionDisplay.SetActive (true);
@@ -75,8 +77,8 @@ public class PlayerCar : MonoBehaviour
     {
         RemoveAnswerButtons ();
         QuestionData questionData = questionPool [questionIndex];
-        Debug.Log(questionPool);
-        Debug.Log(questionIndex);
+        //Debug.Log(questionPool);
+        //Debug.Log(questionIndex);
         questionDisplayText.text = questionData.questionText;
 
         for (int i = 0; i < questionData.answers.Length; i++) 
@@ -105,7 +107,7 @@ public class PlayerCar : MonoBehaviour
         if (isCorrect) 
         {
             playerScore += currentRoundData.pointsAddedForCorrectAnswer;
-            scoreDisplayText.text = "Score: " + playerScore.ToString();
+            UpdateScore();
         }
 
         if (questionPool.Length > questionIndex + 1) {
@@ -147,6 +149,11 @@ public class PlayerCar : MonoBehaviour
     private void UpdateTimeRemainingDisplayGAME()
     {
         gameTimeDisplay.text = "Time: " + Mathf.Round (timeRemainingGame).ToString ();
+    }
+
+    private void UpdateScore()
+    {
+        scoreDisplayText.text = "Score: " + playerScore.ToString();
     }
 
 
