@@ -309,7 +309,14 @@ IEnumerator ExecuteAfterTime(Collision collision)
  IEnumerator ExecuteAfterEnemy()
  {
      Debug.Log("pusim ga prije");
-    yield return new WaitForSeconds(6.0f);
+     coolDown.SetActive(true);
+      acceleration = 1500;
+    turnSpeed = 40;
+    yield return new WaitForSeconds(3.0f);
+    acceleration = 2200;
+    turnSpeed = 80;
+    coolDown.SetActive(false);
+
     Debug.Log("pusim ga poslije");
  }
  void OnTriggerEnter(Collider collision)
@@ -321,9 +328,12 @@ IEnumerator ExecuteAfterTime(Collision collision)
            Destroy(collision.gameObject);
         }
 
-          if(collision.gameObject.tag == "Enemy")
+  
+          if(collision.gameObject.tag == "Roadsign")
         {
-            healthStatus -= 10;
+                       Destroy(collision.gameObject);
+
+            StartCoroutine(ExecuteAfterEnemy());
         }
  }
 
@@ -342,6 +352,16 @@ IEnumerator ExecuteAfterTime(Collision collision)
             //collision.gameObject.SetActive(true);
         }
       
+       if(collision.gameObject.tag == "Enemy")
+        {
+            PlayerStats.playerScore -= 10;
+           UpdateScore();
+           Destroy(collision.gameObject);
+
+            //collision.gameObject.GetComponent<Renderer> ().enabled = false;
+           // StartCoroutine(ExecuteAfterTime(collision));
+            //collision.gameObject.SetActive(true);
+        }
          
       /*  if (collision.gameObject.tag == "Obstacle") {
             healthStatus -= 10;
