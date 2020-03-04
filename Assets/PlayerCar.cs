@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro; 
+using TMPro;
 
 
 public class PlayerCar : MonoBehaviour
@@ -44,20 +44,20 @@ public class PlayerCar : MonoBehaviour
     public GameManager gm;
 
     private float secondsCount = 0;
-     private int minuteCount = 0;
-     private int hourCount = 0;
-     private float scoreStatus = 0;
-     private float healthStatus = 100;
-    
+    private int minuteCount = 0;
+    private int hourCount = 0;
+    private float scoreStatus = 0;
+    private float healthStatus = 100;
+
     public GameObject pauseScreen;
     public static bool isPaused = false;
-    
+
 
     // Use this for initialization
-    public void start_questions_game () 
+    public void start_questions_game()
     {
-        dataController = FindObjectOfType<DataController> ();
-        currentRoundData = dataController.GetCurrentRoundData ();
+        dataController = FindObjectOfType<DataController>();
+        currentRoundData = dataController.GetCurrentRoundData();
         questionPool = currentRoundData.questions;
         timeRemainingQuestion = 3.0f;
         UpdateTimeRemainingDisplay();
@@ -65,23 +65,23 @@ public class PlayerCar : MonoBehaviour
         //playerScore = 0;
         //questionIndex = 0;
 
-        questionDisplay.SetActive (true);
+        questionDisplay.SetActive(true);
         //gameDisplay.SetActive (false);
 
-        ShowQuestion ();
+        ShowQuestion();
         isRoundActive = true;
 
     }
 
     private void ShowQuestion()
     {
-        RemoveAnswerButtons ();
-        QuestionData questionData = questionPool [questionIndex];
+        RemoveAnswerButtons();
+        QuestionData questionData = questionPool[questionIndex];
         //Debug.Log(questionPool);
         //Debug.Log(questionIndex);
         questionDisplayText.text = questionData.questionText;
 
-        for (int i = 0; i < questionData.answers.Length; i++) 
+        for (int i = 0; i < questionData.answers.Length; i++)
         {
             GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
             answerButtonGameObjects.Add(answerButtonGameObject);
@@ -89,13 +89,13 @@ public class PlayerCar : MonoBehaviour
 
             AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
             answerButton.Setup(questionData.answers[i]);
-            
+
         }
     }
 
     private void RemoveAnswerButtons()
     {
-        while (answerButtonGameObjects.Count > 0) 
+        while (answerButtonGameObjects.Count > 0)
         {
             answerButtonObjectPool.ReturnObject(answerButtonGameObjects[0]);
             answerButtonGameObjects.RemoveAt(0);
@@ -104,7 +104,7 @@ public class PlayerCar : MonoBehaviour
 
     public void AnswerButtonClicked(bool isCorrect)
     {
-        if (isCorrect) 
+        if (isCorrect)
         {
             PlayerStats.playerScore += currentRoundData.pointsAddedForCorrectAnswer;
             UpdateScore();
@@ -115,27 +115,29 @@ public class PlayerCar : MonoBehaviour
             UpdateScore();
         }
 
-        if (questionPool.Length > questionIndex + 1) {
+        if (questionPool.Length > questionIndex + 1)
+        {
             questionIndex++;
-            ShowQuestion ();
-        } else 
+            ShowQuestion();
+        }
+        else
         {
             EndRound();
         }
 
     }
-    
+
     public void EndRound()
     {
         isRoundActive = false;
 
-        questionDisplay.SetActive (false);
+        questionDisplay.SetActive(false);
         //gameDisplay.SetActive (true);
     }
 
     public void EndGame()
     {
-        isCarActive = false; 
+        isCarActive = false;
         gameOverObject.SetActive(true);
         acceleration = 0;
         turnSpeed = 0;
@@ -143,17 +145,17 @@ public class PlayerCar : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene ("MenuScreen");
+        SceneManager.LoadScene("MenuScreen");
     }
 
     private void UpdateTimeRemainingDisplay()
     {
-        timeRemainingDisplayText.text = "Time: " + Mathf.Round (timeRemainingQuestion).ToString ();
+        timeRemainingDisplayText.text = "Time: " + Mathf.Round(timeRemainingQuestion).ToString();
     }
 
     private void UpdateTimeRemainingDisplayGAME()
     {
-        gameTimeDisplay.text = "Time: " + Mathf.Round (timeRemainingGame).ToString ();
+        gameTimeDisplay.text = "Time: " + Mathf.Round(timeRemainingGame).ToString();
     }
 
     private void UpdateScore()
@@ -165,7 +167,7 @@ public class PlayerCar : MonoBehaviour
     // #################################################################
     public float SlideSlipAmount()
     {
-            return _sideSlipAmount;
+        return _sideSlipAmount;
     }
 
     void Start()
@@ -173,22 +175,27 @@ public class PlayerCar : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody>();
         UpdateScore();
     }
-    
-    public void UpdateTimerUI(){
-         //set timer UI
-         secondsCount += Time.deltaTime;
-         //timerText.text = "m:"+(int)secondsCount + "s\nHealth:" + (int)healthStatus + "\nScore:"+(int)scoreStatus;
-         if(secondsCount >= 60){
-             minuteCount++;
-             secondsCount = 0;
-         }else if(minuteCount >= 60){
-             hourCount++;
-             minuteCount = 0;
-         }    
-     }
 
-    public void continueGame() {
-        
+    public void UpdateTimerUI()
+    {
+        //set timer UI
+        secondsCount += Time.deltaTime;
+        //timerText.text = "m:"+(int)secondsCount + "s\nHealth:" + (int)healthStatus + "\nScore:"+(int)scoreStatus;
+        if (secondsCount >= 60)
+        {
+            minuteCount++;
+            secondsCount = 0;
+        }
+        else if (minuteCount >= 60)
+        {
+            hourCount++;
+            minuteCount = 0;
+        }
+    }
+
+    public void continueGame()
+    {
+
         acceleration = 2200;
         turnSpeed = 80;
         isPaused = false;
@@ -202,29 +209,31 @@ public class PlayerCar : MonoBehaviour
         Time.timeScale = 1f;
         acceleration = 2200;
         turnSpeed = 80;
+        
 
     }
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            if(isPaused)
+            if (isPaused)
             {
                 continueGame();
             }
-            else {
+            else
+            {
                 print("space key was pressed");
                 pauseScreen.SetActive(true);
                 isPaused = true;
                 acceleration = 0;
-                turnSpeed = 0; 
+                turnSpeed = 0;
                 Time.timeScale = 0f;
             }
-          
+
         }
 
         //UpdateTimerUI();
-        if(isCarActive)
+        if (isCarActive)
         {
             timeRemainingGame -= Time.deltaTime;
             UpdateTimeRemainingDisplayGAME();
@@ -234,9 +243,9 @@ public class PlayerCar : MonoBehaviour
                 EndGame();
             }
         }
-    
-        
-        if (isRoundActive) 
+
+
+        if (isRoundActive)
         {
             timeRemainingQuestion -= Time.deltaTime;
             UpdateTimeRemainingDisplay();
@@ -244,7 +253,7 @@ public class PlayerCar : MonoBehaviour
             if (timeRemainingQuestion <= 0f)
             {
                 EndRound();
-            }  
+            }
         }
         SetRotationPoint();
         SetSlideSlip();
@@ -271,9 +280,9 @@ public class PlayerCar : MonoBehaviour
             Vector3 direction = target - transform.position;
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
-             
+
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -287,91 +296,78 @@ public class PlayerCar : MonoBehaviour
 
     }
 
-IEnumerator ExecuteAfterTime(Collision collision)
- {
-    Debug.Log("Your enter Coroutine at" + Time.time);
-    Debug.Log(this.lastPosition);
-    
-    start_questions_game();
-    
-    yield return new WaitForSeconds(timeRemainingQuestion);
-    
-    acceleration = 2200;
-    turnSpeed = 80;
-    yield return new WaitForSeconds(5.0f);
+    IEnumerator ExecuteAfterTime(Collision collision)
+    {
+        Debug.Log("Your enter Coroutine at" + Time.time);
+        Debug.Log(this.lastPosition);
 
-    collision.gameObject.SetActive(true);
-    //collision.gameObject.GetComponent<Renderer> ().enabled = true;
-     
-     // Code to execute after the delay
- }
+        start_questions_game();
 
- IEnumerator ExecuteAfterEnemy()
- {
-     Debug.Log("pusim ga prije");
-     coolDown.SetActive(true);
-      acceleration = 1500;
-    turnSpeed = 40;
-    yield return new WaitForSeconds(3.0f);
-    acceleration = 2200;
-    turnSpeed = 80;
-    coolDown.SetActive(false);
+        yield return new WaitForSeconds(timeRemainingQuestion);
+        acceleration = 2200;
+        turnSpeed = 80;
+        yield return new WaitForSeconds(5.0f);
+        collision.gameObject.SetActive(true);
+    }
 
-    Debug.Log("pusim ga poslije");
- }
- void OnTriggerEnter(Collider collision)
- {
-      if(collision.gameObject.tag == "Coin")
+    IEnumerator ExecuteAfterEnemy()
+    {
+        coolDown.SetActive(true);
+        acceleration = 1000;
+        turnSpeed = 25;
+        yield return new WaitForSeconds(3.0f);
+        acceleration = 2200;
+        turnSpeed = 80;
+        coolDown.SetActive(false);
+
+    }
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Coin")
         {
-           PlayerStats.playerScore += 10;
-           UpdateScore();
-           Destroy(collision.gameObject);
+            PlayerStats.playerScore += 10;
+            UpdateScore();
+            Destroy(collision.gameObject);
         }
-
-  
-          if(collision.gameObject.tag == "Roadsign")
-        {
-                       Destroy(collision.gameObject);
-
-            StartCoroutine(ExecuteAfterEnemy());
-        }
- }
-
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Question")
+        if (collision.gameObject.tag == "Question")
         {
 
             acceleration = 0;
-            turnSpeed = 0;  
+            turnSpeed = 0;
             //Destroy(collision.gameObject);
             collision.gameObject.SetActive(false);
             //collision.gameObject.GetComponent<Renderer> ().enabled = false;
             StartCoroutine(ExecuteAfterTime(collision));
             //collision.gameObject.SetActive(true);
         }
-      
-       if(collision.gameObject.tag == "Enemy")
+
+        if (collision.gameObject.tag == "Enemy")
         {
             PlayerStats.playerScore -= 10;
-           UpdateScore();
-           Destroy(collision.gameObject);
-
-            //collision.gameObject.GetComponent<Renderer> ().enabled = false;
-           // StartCoroutine(ExecuteAfterTime(collision));
-            //collision.gameObject.SetActive(true);
+            UpdateScore();
+            Destroy(collision.gameObject);
         }
-         
-      /*  if (collision.gameObject.tag == "Obstacle") {
+        if (collision.gameObject.tag == "Roadsign")
+        {
+            Destroy(collision.gameObject);
+
+            StartCoroutine(ExecuteAfterEnemy());
+        }
+
+        /*  if (collision.gameObject.tag == "Obstacle") {
+              healthStatus -= 10;
+              if(healthStatus <= 0) SceneManager.LoadScene("endGame");
+              Destroy (collision.gameObject);
+       }*/
+        if (collision.gameObject.tag == "Border")
+        {
             healthStatus -= 10;
-            if(healthStatus <= 0) SceneManager.LoadScene("endGame");
-            Destroy (collision.gameObject);
-     }*/
-      if (collision.gameObject.tag == "Border") {
-        healthStatus -= 10;
-        if(healthStatus <= 0)
-            gameOverObject.SetActive(true);
+            if (healthStatus <= 0)
+                gameOverObject.SetActive(true);
         }
     }
 
