@@ -318,6 +318,16 @@ IEnumerator ExecuteAfterTime(Collision collision)
     acceleration = 2200;
     turnSpeed = 80;
  }
+ void OnTriggerEnter(Collider collision)
+ {
+     print("uso");
+      if(collision.gameObject.tag == "Coin")
+        {
+            print("usla u if");
+           scoreStatus += 10;
+           Destroy(collision.gameObject);
+        }
+ }
 
 
     void OnCollisionEnter(Collision collision)
@@ -346,11 +356,7 @@ IEnumerator ExecuteAfterTime(Collision collision)
             //Start_Writing();
             StartCoroutine(ExecuteAfterEnemy());
         }
-          if(collision.gameObject.tag == "Coin")
-        {
-           scoreStatus += 10;
-           Destroy(collision.gameObject);
-        }
+         
       /*  if (collision.gameObject.tag == "Obstacle") {
             healthStatus -= 10;
             if(healthStatus <= 0) SceneManager.LoadScene("endGame");
