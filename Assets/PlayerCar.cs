@@ -228,7 +228,7 @@ public class PlayerCar : MonoBehaviour
         {
             timeRemainingGame -= Time.deltaTime;
             UpdateTimeRemainingDisplayGAME();
-            UpdateScore();
+            //UpdateScore();
             if (timeRemainingGame <= 0f)
             {
                 EndGame();
@@ -320,11 +320,10 @@ IEnumerator ExecuteAfterTime(Collision collision)
  }
  void OnTriggerEnter(Collider collision)
  {
-     print("uso");
       if(collision.gameObject.tag == "Coin")
         {
-            print("usla u if");
-           scoreStatus += 10;
+           PlayerStats.playerScore += 10;
+           UpdateScore();
            Destroy(collision.gameObject);
         }
  }
