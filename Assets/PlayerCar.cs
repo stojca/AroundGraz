@@ -258,7 +258,7 @@ public class PlayerCar : MonoBehaviour
 
     private void checkScore()
     {
-        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore >= 80)
+        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore >= 70)
         {
             //SceneManager.LoadScene("Jakomini");
             GameWin();
@@ -271,7 +271,7 @@ public class PlayerCar : MonoBehaviour
         {
             SceneManager.LoadScene("StLeonhard");
         }
-        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore >= 70)
+        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore >= 60)
         {
             SceneManager.LoadScene("InnerStadt");
         }
