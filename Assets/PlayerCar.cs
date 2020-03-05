@@ -256,7 +256,7 @@ public class PlayerCar : MonoBehaviour
 
     private void checkScore()
     {
-        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore > 10)
+        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore > 100)
         {
             //SceneManager.LoadScene("Jakomini");
             GameWin();
