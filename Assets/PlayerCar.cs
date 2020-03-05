@@ -38,7 +38,7 @@ public class PlayerCar : MonoBehaviour
     private bool isCarActive = true;
     private float timeRemainingQuestion;
     private float timeRemainingGame = 45.0f;
-    private int questionIndex = 0;
+    //private int questionIndex = 0;
     //private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     public GameManager gm;
@@ -76,7 +76,7 @@ public class PlayerCar : MonoBehaviour
     private void ShowQuestion()
     {
         RemoveAnswerButtons();
-        QuestionData questionData = questionPool[questionIndex];
+        QuestionData questionData = questionPool[PlayerStats.questionIndex];
         //Debug.Log(questionPool);
         //Debug.Log(questionIndex);
         questionDisplayText.text = questionData.questionText;
@@ -108,6 +108,7 @@ public class PlayerCar : MonoBehaviour
         {
             PlayerStats.playerScore += currentRoundData.pointsAddedForCorrectAnswer;
             UpdateScore();
+            checkScore();
         }
         else
         {
@@ -115,10 +116,10 @@ public class PlayerCar : MonoBehaviour
             UpdateScore();
         }
 
-        if (questionPool.Length > questionIndex + 1)
+        if (questionPool.Length > PlayerStats.questionIndex + 1)
         {
-            questionIndex++;
-            ShowQuestion();
+            PlayerStats.questionIndex++;
+            //ShowQuestion();
         }
         else
         {
@@ -205,11 +206,12 @@ public class PlayerCar : MonoBehaviour
 
     public void retryGame()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("InnerStadt");
         Time.timeScale = 1f;
         acceleration = 2200;
         turnSpeed = 80;
         PlayerStats.playerScore = 0;
+        PlayerStats.questionIndex = 0; 
 
     }
     void Update()
@@ -259,6 +261,17 @@ public class PlayerCar : MonoBehaviour
         SetSlideSlip();
     }
 
+    private void checkScore()
+    {
+        if(PlayerStats.playerScore > 9)
+        {
+            SceneManager.LoadScene("Jakomini");
+        }
+        if(PlayerStats.playerScore > 25)
+        {
+            SceneManager.LoadScene("StPeter");
+        }
+    }
     private void SetSlideSlip()
     {
         Vector3 direction = transform.position - lastPosition;
@@ -328,6 +341,7 @@ public class PlayerCar : MonoBehaviour
             PlayerStats.playerScore += 10;
             UpdateScore();
             Destroy(collision.gameObject);
+            checkScore();
         }
       
     }
