@@ -38,7 +38,7 @@ public class PlayerCar : MonoBehaviour
     private bool isRoundActive;
     private bool isCarActive = true;
     private float timeRemainingQuestion;
-    private float timeRemainingGame = 45.0f;
+    private float timeRemainingGame = 5.0f;
     //private int questionIndex = 0;
     private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
@@ -111,12 +111,14 @@ public class PlayerCar : MonoBehaviour
             UpdateScore();
             checkScore();
             EndRound();
+            timeRemainingQuestion = 0;
         }
         else
         {
             playerScore -= 3;
             UpdateScore();
             EndRound();
+            timeRemainingQuestion = 0;
         }
 
         if (questionPool.Length > PlayerStats.questionIndex + 1)
