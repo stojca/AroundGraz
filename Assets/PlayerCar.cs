@@ -343,7 +343,18 @@ public class PlayerCar : MonoBehaviour
             Destroy(collision.gameObject);
             checkScore();
         }
-      
+          if (collision.gameObject.tag == "Enemy")
+        {
+            PlayerStats.playerScore -= 10;
+            UpdateScore();
+            Destroy(collision.gameObject);
+        }
+         if(collision.gameObject.tag == "Time")
+        {
+             UpdateTimeRemainingDisplayGAME();
+             timeRemainingGame += 5f;
+            Destroy(collision.gameObject);
+        }   
     }
 
     void OnCollisionEnter(Collision collision)
@@ -359,32 +370,12 @@ public class PlayerCar : MonoBehaviour
             StartCoroutine(ExecuteAfterTime(collision));
             //collision.gameObject.SetActive(true);
         }
-
-        if (collision.gameObject.tag == "Enemy")
-        {
-            PlayerStats.playerScore -= 10;
-            UpdateScore();
-            Destroy(collision.gameObject);
-        }
         if (collision.gameObject.tag == "Roadsign")
         {
             Destroy(collision.gameObject);
 
             StartCoroutine(ExecuteAfterEnemy());
         }
-
-          if(collision.gameObject.tag == "Time")
-        {
-             UpdateTimeRemainingDisplayGAME();
-             timeRemainingGame += 5f;
-            Destroy(collision.gameObject);
-        }
-
-        /*  if (collision.gameObject.tag == "Obstacle") {
-              healthStatus -= 10;
-              if(healthStatus <= 0) SceneManager.LoadScene("endGame");
-              Destroy (collision.gameObject);
-       }*/
         if (collision.gameObject.tag == "Border")
         {
             healthStatus -= 10;
