@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2378,6 +2378,68 @@ MonoBehaviour:
         isCorrect: 1
       - answerText: Drawa
         isCorrect: 1
+    - questionText: How many students does Graz have?
+      answers:
+      - answerText: Over 5000
+        isCorrect: 1
+      - answerText: Over 50000
+        isCorrect: 1
+      - answerText: Under 45000
+        isCorrect: 0
+    - questionText: How many museums does Graz have?
+      answers:
+      - answerText: 20
+        isCorrect: 0
+      - answerText: 17
+        isCorrect: 0
+      - answerText: 34
+        isCorrect: 1
+    - questionText: How many universities does Graz have?
+      answers:
+      - answerText: 2
+        isCorrect: 0
+      - answerText: 4
+        isCorrect: 0
+      - answerText: 6
+        isCorrect: 1
+    - questionText: How high is the sea level in Graz?
+      answers:
+      - answerText: 278
+        isCorrect: 0
+      - answerText: 353
+        isCorrect: 1
+    - questionText: How many people can fit in the Stadthalle?
+      answers:
+      - answerText: 11000
+        isCorrect: 1
+      - answerText: 5000
+        isCorrect: 0
+      - answerText: 15000
+        isCorrect: 0
+    - questionText: Who is the most famous actor from Graz?
+      answers:
+      - answerText: Arnold Schwarzenegger
+        isCorrect: 1
+      - answerText: Aleksandar Stojicic
+        isCorrect: 0
+      - answerText: Stefan 'Spajkan' Rajinovic
+        isCorrect: 0
+    - questionText: Who is the major of Graz?
+      answers:
+      - answerText: Siegfried Nagl
+        isCorrect: 1
+      - answerText: Aleksandar Stojicic
+        isCorrect: 0
+      - answerText: Amela Kurtic
+        isCorrect: 0
+    - questionText: 'In '
+      answers:
+      - answerText: Siegfried Nagl
+        isCorrect: 1
+      - answerText: Aleksandar Stojicic
+        isCorrect: 0
+      - answerText: Amela Kurtic
+        isCorrect: 0
 --- !u!4 &740063633
 Transform:
   m_ObjectHideFlags: 0
