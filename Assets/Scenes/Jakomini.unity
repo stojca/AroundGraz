@@ -645,12 +645,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439818244811336473, guid: 00994b7674c5d4b4580150643b58603d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4439818244811336475, guid: 00994b7674c5d4b4580150643b58603d,
         type: 3}
       propertyPath: m_Name
       value: ExtraTime
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4439818244811336472, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
 --- !u!1001 &140335123
 PrefabInstance:
@@ -2191,12 +2197,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439818244811336473, guid: 00994b7674c5d4b4580150643b58603d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4439818244811336475, guid: 00994b7674c5d4b4580150643b58603d,
         type: 3}
       propertyPath: m_Name
       value: ExtraTime (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4439818244811336472, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
 --- !u!1001 &592495913
 PrefabInstance:
@@ -3297,12 +3309,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439818244811336473, guid: 00994b7674c5d4b4580150643b58603d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4439818244811336475, guid: 00994b7674c5d4b4580150643b58603d,
         type: 3}
       propertyPath: m_Name
       value: ExtraTime (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4439818244811336472, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
 --- !u!1001 &797745188
 PrefabInstance:
@@ -6110,12 +6128,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439818244811336473, guid: 00994b7674c5d4b4580150643b58603d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4439818244811336475, guid: 00994b7674c5d4b4580150643b58603d,
         type: 3}
       propertyPath: m_Name
       value: ExtraTime (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4439818244811336472, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00994b7674c5d4b4580150643b58603d, type: 3}
 --- !u!4 &1425960846 stripped
 Transform:
