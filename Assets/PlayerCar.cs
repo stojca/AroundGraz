@@ -16,6 +16,7 @@ public class PlayerCar : MonoBehaviour
     Quaternion targetRotation;
     float _sideSlipAmount;
     [SerializeField] GameObject gameOverObject;
+    [SerializeField] GameObject gameWinObject;
 
     public GameObject questionDisplay;
     public GameObject gameDisplay;
@@ -39,7 +40,7 @@ public class PlayerCar : MonoBehaviour
     private float timeRemainingQuestion;
     private float timeRemainingGame = 45.0f;
     //private int questionIndex = 0;
-    //private int playerScore = 0;
+    private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     public GameManager gm;
 
@@ -106,14 +107,16 @@ public class PlayerCar : MonoBehaviour
     {
         if (isCorrect)
         {
-            PlayerStats.playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+            playerScore += currentRoundData.pointsAddedForCorrectAnswer;
             UpdateScore();
             checkScore();
+            EndRound();
         }
         else
         {
-            PlayerStats.playerScore -= 3;
+            playerScore -= 3;
             UpdateScore();
+            EndRound();
         }
 
         if (questionPool.Length > PlayerStats.questionIndex + 1)
@@ -144,6 +147,14 @@ public class PlayerCar : MonoBehaviour
         turnSpeed = 0;
     }
 
+    public void GameWin()
+    {
+        isCarActive = false;
+        gameWinObject.SetActive(true);
+        acceleration = 0;
+        turnSpeed = 0;
+    }
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MenuScreen");
@@ -161,7 +172,7 @@ public class PlayerCar : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreDisplayText.text = "Score: " + PlayerStats.playerScore.ToString();
+        scoreDisplayText.text = "Score: " + playerScore.ToString();
     }
 
 
@@ -177,23 +188,6 @@ public class PlayerCar : MonoBehaviour
         UpdateScore();
     }
 
-    public void UpdateTimerUI()
-    {
-        //set timer UI
-        secondsCount += Time.deltaTime;
-        //timerText.text = "m:"+(int)secondsCount + "s\nHealth:" + (int)healthStatus + "\nScore:"+(int)scoreStatus;
-        if (secondsCount >= 60)
-        {
-            minuteCount++;
-            secondsCount = 0;
-        }
-        else if (minuteCount >= 60)
-        {
-            hourCount++;
-            minuteCount = 0;
-        }
-    }
-
     public void continueGame()
     {
 
@@ -206,11 +200,11 @@ public class PlayerCar : MonoBehaviour
 
     public void retryGame()
     {
-        SceneManager.LoadScene("InnerStadt");
+        SceneManager.LoadScene("Jakomini");
         Time.timeScale = 1f;
         acceleration = 2200;
         turnSpeed = 80;
-        PlayerStats.playerScore = 0;
+        playerScore = 0;
         PlayerStats.questionIndex = 0; 
 
     }
@@ -234,7 +228,6 @@ public class PlayerCar : MonoBehaviour
 
         }
 
-        //UpdateTimerUI();
         if (isCarActive)
         {
             timeRemainingGame -= Time.deltaTime;
@@ -263,17 +256,22 @@ public class PlayerCar : MonoBehaviour
 
     private void checkScore()
     {
-        if(PlayerStats.playerScore > 9)
+        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore > 100)
         {
-            SceneManager.LoadScene("Jakomini");
+            //SceneManager.LoadScene("Jakomini");
+            GameWin();
         }
-        if(PlayerStats.playerScore > 25)
+        if(SceneManager.GetActiveScene ().name == "Jakomini" && playerScore > 40)
         {
             SceneManager.LoadScene("StPeter");
         }
-        if(PlayerStats.playerScore > 35)
+        if(SceneManager.GetActiveScene ().name == "StPeter" && playerScore > 60)
         {
             SceneManager.LoadScene("StLeonhard");
+        }
+        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore > 80)
+        {
+            SceneManager.LoadScene("InnerStadt");
         }
     }
     private void SetSlideSlip()
@@ -342,14 +340,14 @@ public class PlayerCar : MonoBehaviour
     {
         if (collision.gameObject.tag == "Coin")
         {
-            PlayerStats.playerScore += 10;
+            playerScore += 10;
             UpdateScore();
             Destroy(collision.gameObject);
             checkScore();
         }
           if (collision.gameObject.tag == "Enemy")
         {
-            PlayerStats.playerScore -= 5;
+            playerScore -= 5;
             UpdateScore();
             Destroy(collision.gameObject);
         }
@@ -382,7 +380,7 @@ public class PlayerCar : MonoBehaviour
         }
         if (collision.gameObject.tag == "Border")
         {
-            PlayerStats.playerScore -= 3;
+            playerScore -= 3;
             UpdateScore();
             
         }
