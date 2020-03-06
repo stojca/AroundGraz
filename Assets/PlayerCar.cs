@@ -111,12 +111,14 @@ public class PlayerCar : MonoBehaviour
             UpdateScore();
             checkScore();
             EndRound();
+            timeRemainingQuestion = 0;
         }
         else
         {
             playerScore -= 3;
             UpdateScore();
             EndRound();
+            timeRemainingQuestion = 0;
         }
 
         if (questionPool.Length > PlayerStats.questionIndex + 1)
@@ -256,20 +258,20 @@ public class PlayerCar : MonoBehaviour
 
     private void checkScore()
     {
-        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore > 100)
+        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore >= 70)
         {
             //SceneManager.LoadScene("Jakomini");
             GameWin();
         }
-        if(SceneManager.GetActiveScene ().name == "Jakomini" && playerScore > 40)
+        if(SceneManager.GetActiveScene ().name == "Jakomini" && playerScore >= 40)
         {
             SceneManager.LoadScene("StPeter");
         }
-        if(SceneManager.GetActiveScene ().name == "StPeter" && playerScore > 60)
+        if(SceneManager.GetActiveScene ().name == "StPeter" && playerScore >= 60)
         {
             SceneManager.LoadScene("StLeonhard");
         }
-        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore > 80)
+        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore >= 60)
         {
             SceneManager.LoadScene("InnerStadt");
         }
