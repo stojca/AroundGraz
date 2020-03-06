@@ -38,7 +38,7 @@ public class PlayerCar : MonoBehaviour
     private bool isRoundActive;
     private bool isCarActive = true;
     private float timeRemainingQuestion;
-    private float timeRemainingGame = 45.0f;
+    private float timeRemainingGame = 60.0f;
     //private int questionIndex = 0;
     private int playerScore = 0;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
@@ -258,20 +258,20 @@ public class PlayerCar : MonoBehaviour
 
     private void checkScore()
     {
-        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore >= 70)
+        if(SceneManager.GetActiveScene ().name == "InnerStadt" && playerScore >= 50)
         {
             //SceneManager.LoadScene("Jakomini");
             GameWin();
         }
-        if(SceneManager.GetActiveScene ().name == "Jakomini" && playerScore >= 40)
+        if(SceneManager.GetActiveScene ().name == "Jakomini" && playerScore >= 30)
         {
             SceneManager.LoadScene("StPeter");
         }
-        if(SceneManager.GetActiveScene ().name == "StPeter" && playerScore >= 60)
+        if(SceneManager.GetActiveScene ().name == "StPeter" && playerScore >= 40)
         {
             SceneManager.LoadScene("StLeonhard");
         }
-        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore >= 60)
+        if(SceneManager.GetActiveScene ().name == "StLeonhard" && playerScore >= 40)
         {
             SceneManager.LoadScene("InnerStadt");
         }
