@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-
 public class PlayerCar : MonoBehaviour
 {
     [SerializeField] float turnSpeed = 5;
@@ -77,6 +76,9 @@ public class PlayerCar : MonoBehaviour
     private void ShowQuestion()
     {
         RemoveAnswerButtons();
+        //Random new_random_idx = new Random();
+        print(questionPool.Length);
+        PlayerStats.questionIndex = Random.Range(0, questionPool.Length);
         QuestionData questionData = questionPool[PlayerStats.questionIndex];
         //Debug.Log(questionPool);
         //Debug.Log(questionIndex);
@@ -123,7 +125,7 @@ public class PlayerCar : MonoBehaviour
 
         if (questionPool.Length > PlayerStats.questionIndex + 1)
         {
-            PlayerStats.questionIndex++;
+            //PlayerStats.questionIndex++;
             //ShowQuestion();
         }
         else
